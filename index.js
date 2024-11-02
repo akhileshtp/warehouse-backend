@@ -13,7 +13,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: '*',
+    origin: 'https://warehouseqc.netlify.app/',
     credentials: true
 }));
 app.use("/api/role", roleRoute);
