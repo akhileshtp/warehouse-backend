@@ -84,6 +84,16 @@ app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/task", taskRoute);
 
+// Serve static files from Angular build
+app.use(express.static(path.join(__dirname, 'dist/client')));
+
+// Catch-all route to serve index.html for Angular routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/client/index.html'));
+});
+
+
+
 // Error Handling Middleware
 app.use((err, req, res, next) => {
     const statusCode = err.status || 500;
